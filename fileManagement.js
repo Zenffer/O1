@@ -32,5 +32,7 @@ console.log(`Architecture: ${os.arch()}`);
 console.log(`CPU Cores: ${os.cpus().length}`);
 console.log(`Total Memory: ${(os.totalmem() / (1024 ** 3)).toFixed(2)} GB`);
 console.log(`Free Memory: ${(os.freemem() / (1024 ** 3)).toFixed(2)} GB`);
-    
+console.log('Uptime:', os.uptime(), 'seconds');
+console.log('Hostname:', os.hostname());
+console.log('Network Interfaces:', os.networkInterfaces());
 // });
