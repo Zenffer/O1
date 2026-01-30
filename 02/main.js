@@ -1,6 +1,7 @@
 const http = require('http');
 const os = require('os');
 const fs = require('fs');
+const packageinfo = require('./package.json');
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -24,7 +25,8 @@ const server = http.createServer((req, res) => {
             }
         });
     }else if (req.url === '/author'){
-        res.end('<h1>Author Page</h1><p>This is the author page.</p>');
+        res.end(`<h1>Author Page</h1>
+            <p>Author: ${packageinfo.author}</p>`);
     }else{
         res.end('<h1>404 Not Found</h1>');
     }
