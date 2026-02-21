@@ -32,9 +32,50 @@ app.get('user/:userID/name/:userName', (req, res) => {
     res.send(`<h1>User Info</h1><p>User ID: ${req.params.userID}, User Name: ${req.params.userName}</p>`);
 });
 
+// Part 3 – HTTP Methods Practice
+app.get('/student', (req, res) => {
+    res.send('List of students');
+});
+app.post('/student', (req, res) => {
+    res.send('Student created');
+});
+app.put('/student', (req, res) => {
+    res.send('Student updated');
+});
+app.delete('/student', (req, res) => {
+    res.send('Student deleted');
+});
+
+// Part 4 – Route Parameters
+app.get(/students/:id', (req, res) => {
+    res.send(`Student ID: ${req.params.id}`);
+});
+
+// Part 5 – Multiple Route Parameters
+app.get('/students/:studentId/courses/:courseId', (req, res) => {
+    res.send(`Student ID: ${req.params.studentId}\nCourse ID: ${req.params.courseId}`);
+});
+
+// Part 6 – Query Parameters
 app.get('/search', (req, res) => {
-    res.send(`ID: ${req.query.userID},
-        Name: ${req.query.name}`);
+    res.send(`Name: ${req.query.name}\nCourse: ${req.query.course}`);
+});
+
+// Challenge Task – Calculator
+app.get('/calculator', (req, res) => {
+    let num1 = req.query.num1 !== undefined ? parseFloat(req.query.num1) : 10;
+    let num2 = req.query.num2 !== undefined ? parseFloat(req.query.num2) : 5;
+
+    if (isNaN(num1) || isNaN(num2)) {
+        return res.status(400).send('Please provide valid num1 and num2.');
+    }
+
+    const add = num1 + num2;
+    const subtract = num1 - num2;
+    const multiply = num1 * num2;
+    const divide = num2 === 0 ? 'Cannot divide by zero' : num1 / num2;
+
+    res.send(`Add: ${add}\nSubtract: ${subtract}\nMultiply: ${multiply}\nDivide: ${divide}`);
 });
 
 app.listen(port, hostnamae, () => {
