@@ -47,7 +47,7 @@ app.delete('/student', (req, res) => {
 });
 
 // Part 4 – Route Parameters
-app.get(/students/:id', (req, res) => {
+app.get('/students/:id', (req, res) => {
     res.send(`Student ID: ${req.params.id}`);
 });
 
