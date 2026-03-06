@@ -28,6 +28,13 @@ app.post('/data', (req, res) => {
   res.send('Data received successfully!');
 });
 
+app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
+
+app.post('/submit', (req, res) => {
+  console.log('Received form data:', req.body); // Log the received form data to the console
+  res.send('Form data received successfully!');
+});
+
 
 app.listen(3000, () => {
   console.log('Server running on port http://localhost:3000');
